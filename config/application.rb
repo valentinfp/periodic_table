@@ -38,5 +38,6 @@ module PeriodicTable
     config.active_record.schema_format = :sql
 
     config.hosts << "3000-valentinfp-periodictable-6a67tv4jydp.ws-us34.gitpod.io"
+    config.hosts << "3000-valentinfp-periodictable-w80cmd45g7f.ws-us34.gitpod.io"
   end
 end
