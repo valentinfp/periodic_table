@@ -6,6 +6,10 @@ body {
   box-sizing: border-box;
 }
 
+a{
+  color: whitesmoke;
+}
+
 .periodic_table{
   display: grid;
   grid-gap: 5px;
@@ -68,6 +72,15 @@ body {
     .element_symbol{ font-size: calc(.9rem + 3.5vw);}
     .element_name{ font-size: calc(.5rem + 2vw);}
     .element_atomic_mass{font-size: calc(.5rem + 2vw);}
+    border: calc(2px + 0.3vw) solid white;
+
+    a{
+      color: white;
+      transition: color 200ms;
+      &:hover{
+        color: lightgrey;
+      }
+    }
   }
 
   &_shells{
@@ -86,4 +99,38 @@ body {
 .cell{
   width: 100%;
   aspect-ratio: 1 / 1.1;
+}
+
+.container{
+  display: grid;
+  gap: 2rem;
+}
+
+.summary{
+  position: relative;
+  padding-top: 2rem;
+  &::before{
+    content: 'Summary';
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: bold;
+  }
+}
+
+table{
+  justify-self: center;
+  width: Max(800px, 50%);
+  margin: 0 auto;
+  background-color: #212324;
+  border-radius: 5px;
+
+  td + td {
+    text-align: right;
+  }
+
+  td {
+    padding: .5rem 1rem;
+    border-top: 1px solid #484b4d;
+  }
 }

@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="element_box" style="<%= "background-color:#{@element.category.color};"if @element.category%>">
+        <span class="element_number"><%= @element.number %></span>
+        <span class="element_symbol <%=@element.phase.downcase if @element.phase%>"><%= @element.symbol%></span>
+        <a href="<%= @element.source%>" target="_blank"><span class="element_name"><%= @element.name%></span></a>
+        <span class="element_atomic_mass"><%= @element.atomic_mass.round(3)%></span>
+        <span class="element_shells"><% @element.shells.each do |shell|%> <%= shell %> <%end%></span>
+    </div>
+    <div class="summary"><%= @element.summary%></div>
+    <div class="element_info">
+        <table >
+            <% if @element.spectral_img %>
+                <tr>
+                    <td>Spectral Image</td>
+                    <td><a href="<%= @element.spectral_img%>"><%= @element.spectral_img%></a></td>
+                </tr>
+            <% end%>
+            <tr>
+                <td>Category</td>
+                <td><%= @element.category ? @element.category.name.capitalize : 'Unknown' %></td>
+            </tr>
+            <tr>
+                <td class="item">Appearance</td>
+                <td><%= @element.appearance.capitalize || 'Unavailable'%></td>
+            </tr>
+            <tr>
+                <td class="item">Density</td>
+                <td><%= @element.density || 'Unavailable'%> kg/m³</td>
+            </tr>
+            <tr>
+                <td class="item">Discovered by</td>
+                <td><%= @element.discovered_by || 'Unavailable'%></td>
+            </tr>
+            <tr>
+                <td class="item">Shells</td>
+                <td><% @element.shells.each do |shell|%><%= shell.to_s + " "%> <% end %></td>
+            </tr>
+            <tr>
+                <td class="item">Electron configuration</td>
+                <td><%= @element.electron_configuration || 'Unavailable'%></td>
+            </tr>
+            <tr>
+                <td class="item">Electron configuration semantic</td>
+                <td><%= @element.electron_configuration_semantic || 'Unavailable'%></td>
+            </tr>
+            <tr>
+                <td class="item">Electron affinity</td>
+                <td><%= @element.electron_affinity || 'Unavailable'%></td>
+            </tr>
+            <tr>
+                <td class="item">Electronegativity pauling</td>
+                <td><%= @element.electronegativity_pauling || 'Unavailable'%></td>
+            </tr>
+            <tr>
+                <td class="item">Ionization energies</td>
+                <td><% @element.ionization_energies.each do |ie|%><%= ie.to_s + " "%> <% end %></td>
+            </tr>
+            <tr>
+                <td class="item">Boil point</td>
+                <td><%= @element.boil || 'Unavailable'%> K</td>
+            </tr>
+            <tr>
+                <td class="item">Melt point</td>
+                <td><%= @element.melt || 'Unavailable'%> K</td>
+            </tr>
+        </table>
+    </div>
+</div>
