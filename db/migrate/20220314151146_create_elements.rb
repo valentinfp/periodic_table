@@ -3,7 +3,7 @@ class CreateElements < ActiveRecord::Migration[6.1]
     create_table :elements do |t|
       t.references :element_category, null: false, foreign_key: true
       t.string :name
-      t.string :appearence
+      t.string :appearance
       t.float :atomic_mass
       t.float :boil
       t.float :density
