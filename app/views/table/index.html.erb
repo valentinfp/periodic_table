@@ -1,17 +1,27 @@
-<div class="container">
-  <div class="row">
-    <ul>
-    <% @elements["order"].each do |element| %>
-      <li>
-        <%= @elements[element]["name"] %>
-        <%= @elements[element]["number"] %>-
-        <%= @elements[element]["period"] %>,
-        <%= @elements[element]["atomic_mass"] %>
-      </li>
-    <% end %>
-    </ul>
-  </div>
+<% max_y = @elements.pluck(:ypos).max()%>
+<% max_x = @elements.pluck(:xpos).max()%>
+
+
+<div class="periodic_table">
+<% max_y.times do |j|%>
+    <% max_x.times do |i|%>
+      <%  element = @elements.find_by_position(i + 1 , j + 1)%>
+      <% if element%>
+        <%= link_to table_path(element.id) do %>
+        <div class="cell element" style="<%= "background-color:#{element.category.color}" if element.category%>">
+          <span class="element_number"><%= element.number %></span>
+          <span class="element_symbol <%=element.phase.downcase if element.phase%>"><%= element.symbol%></span>
+          <span class="element_name"><%= element.name%></span>
+          <span class="element_atomic_mass"><%= element.atomic_mass.round(3)%></span>
+        </div>
+        <% end %>
+      <% else%>
+        <div class="cell"></div>
+      <% end %>
+    <%end %>
+<% end %>
 </div>
+
 
 
 

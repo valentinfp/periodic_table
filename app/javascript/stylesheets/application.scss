@@ -3,4 +3,87 @@
 body {
   background: #313435;
   color: whitesmoke;
+  box-sizing: border-box;
+}
+
+.periodic_table{
+  display: grid;
+  grid-gap: 5px;
+  margin: 0 auto;
+  width: 100%;
+  grid-template-columns: repeat(18, calc(30px + 2.5%));
+  justify-content: center;
+  &_row{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 5px;
+  }
+
+  a{
+    color: whitesmoke;
+    text-decoration: none;
+  }
+}
+.element{
+  display: grid;
+  border: 2px solid white;
+  padding: 2px;
+  span{
+    display: inline-block;
+    line-height: 0.3cm;
+    gap: 0;
+    width: 100%;
+  }
+  &_number{
+    font-size: calc(.6rem + 15%);
+  }
+  &_symbol{
+    font-size: calc(.9rem + 30%);
+    font-weight: bold;
+    color: grey;
+
+    &.solid{ color: white; }
+    &.liquid{ color: violet; }
+    &.gas{ color: tomato; }
+  }
+  &_name{
+    font-size: calc(.5rem + 15%);
+    letter-spacing: -0.0383333em;
+  }
+  &_atomic_mass{
+    font-size: calc(.5rem + 10%);
+  }
+
+  &_box{
+    display: grid;
+    width: calc(130px + 10vw);
+    height: calc(130px + 12vw);
+    margin: 0 auto;
+    grid-template-columns: 9fr 1fr;
+    grid-template-areas: "info shells" "info shells" "info shells" "info shells";
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    padding: calc(.5rem + 1%);
+    
+    .element_number{ font-size: calc(.7rem + 2vw);}
+    .element_symbol{ font-size: calc(.9rem + 3.5vw);}
+    .element_name{ font-size: calc(.5rem + 2vw);}
+    .element_atomic_mass{font-size: calc(.5rem + 2vw);}
+  }
+
+  &_shells{
+    grid-area: shells;
+    height: 100%;
+    font-size: calc(.5rem + 1.5vw);
+  }
+  transition: border 200ms;
+
+  &:hover{
+    cursor: pointer;
+    border: 5px solid white;
+  }
+}
+
+.cell{
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
 }
