@@ -1,2 +1,1 @@
-web: bundle exec rails server -b 0.0.0.0 -p 3000
-js: ./bin/webpack-dev-server
+web: bundle exec rails server -b 0.0.0.0 -p 3000 -e ${RACK_ENV:-development}
