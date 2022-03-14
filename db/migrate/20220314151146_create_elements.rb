@@ -1,8 +1,8 @@
 class CreateElements < ActiveRecord::Migration[6.1]
   def change
     create_table :elements do |t|
-      t.references :element_category, null: false, foreign_key: true
-      t.string :name
+      t.references :element_category, foreign_key: true
+      t.string :name, null: false
       t.string :appearance
       t.float :atomic_mass
       t.float :boil
@@ -11,12 +11,12 @@ class CreateElements < ActiveRecord::Migration[6.1]
       t.float :melt
       t.float :molar_heat
       t.float :named_by
-      t.integer :number
+      t.integer :number, null: false
       t.integer :period
       t.string :source
       t.string :spectral_img
       t.text :summary
-      t.string :symbol
+      t.string :symbol, null: false
       t.integer :xpos
       t.integer :ypos
       t.integer :shells, array: true
